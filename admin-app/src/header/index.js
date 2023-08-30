@@ -3,6 +3,8 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 /**
 * @author
 * @function Header
@@ -12,7 +14,8 @@ export const Header = (props) => {
   return(
     <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
         <Container>
-        <Navbar.Brand href="#home">Admin Dashbord</Navbar.Brand>
+        {/* <Navbar.Brand href="#home">Admin Dashbord</Navbar.Brand> */}
+        <Link to={'/'} className='navbar-brand'>Admin Dashbord</Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
@@ -29,9 +32,12 @@ export const Header = (props) => {
             </NavDropdown> */}
             </Nav>
             <Nav>
-            <Nav.Link eventKey={2} href="#memes">
-                Signin
-            </Nav.Link>
+                <li className='nav-item'>
+                    <NavLink className={'nav-link'} to={'/signin'}>Signin</NavLink>
+                </li>
+                <li className='nav-item'>
+                    <NavLink className={'nav-link'} to={'/signup'}>Signup</NavLink>
+                </li>
             </Nav>
         </Navbar.Collapse>
         </Container>

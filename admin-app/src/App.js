@@ -1,12 +1,19 @@
 import './App.css';
-import { Layout } from './components/layout';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import {Home} from './components/Home';
+import { Signin } from './components/Signin';
+import { Signup } from './components/Signup';
 
 function App() {
   return (
     <div className="App">
-      <Layout>
-        <h1>hello world</h1>
-      </Layout>
+       <Router>
+          <Routes>
+            <Route path='/' Component={Home} />
+            <Route path='/signin' Component={Signin} />
+            <Route path='/signup' Component={Signup} />
+          </Routes>
+       </Router>
     </div>
   );
 }
