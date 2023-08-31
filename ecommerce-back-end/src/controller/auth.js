@@ -4,7 +4,9 @@ const {validationResult} = require('express-validator')
 
 exports.signup = function (req, res) {
     const errors = validationResult(req);
-    return res.status(400).json({errors: errors.array()})
+    if(errors.array().length != 0) {
+        return res.status(400).json({errors: errors.array()})
+    }
     const {
         firstname,
         lastname,
