@@ -1,9 +1,9 @@
 const express = require("express");
 const env = require('dotenv');
 const app = express();
-const bodyParser = require("body-parser");
 const mongoose = require('mongoose');
 const  authRoutes = require("./routes/auth");
+const categoryRoutes = require('./routes/category');
 const  adminRoutes = require("./routes/admin/auth");
 
 /**
@@ -15,9 +15,10 @@ mongoose.connect(`mongodb+srv://${process.env.MONGO_DB_USER}:${process.env.MONGO
     console.log('database connected');
 });
 
-app.use(bodyParser());
+app.use(express.json());
 app.use('/api', authRoutes);
 app.use('/api', adminRoutes);
+app.use('/api', categoryRoutes);
 app.get('/', function(req, res, next) {
     res.status(200).json({
         message: "Hello from server"
