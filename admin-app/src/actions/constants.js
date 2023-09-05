@@ -1,0 +1,5 @@
+export const authConstants = {
+    LOGINREQUEST: "LOGINREQUEST",
+    LOGINFAILURE: "LOGINFAILURE",
+    LOGINSUCCESS: "LOGINSUCCESS"
+}
