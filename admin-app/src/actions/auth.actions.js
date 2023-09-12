@@ -30,7 +30,6 @@ export const login = (user) => {
     }
 }
 
-
 export const isUserLoggedIn = () => {
   return async dispatch => {
     const token = localStorage.getItem('token');

@@ -14,6 +14,7 @@ exports.validateSignInRequest = [
 exports.isRequestValidated = ( req, res, next ) => {
     const errors = validationResult(req);
     if(errors.array().length != 0) {
+        console.log(errors.array());
         return res.status(400).json({errors: errors.array()})
     }
     next();
