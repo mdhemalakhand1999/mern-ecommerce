@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Layout } from '../../layout'
 import Container from 'react-bootstrap/esm/Container'
 import Button from 'react-bootstrap/Button';
@@ -6,11 +6,12 @@ import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/esm/Col';
 import Row from 'react-bootstrap/esm/Row';
 import { Input } from '../UI/Input';
-import { login } from '../../actions';
-import { useDispatch } from 'react-redux'
+import { isUserLoggedIn, login } from '../../actions';
+import { useDispatch, useSelector } from 'react-redux'
+import { Navigate } from 'react-router-dom';
 /**
-* @author
-* @function Signin
+ * @author
+ * @function Signin
 **/
 
 export const Signin = (props) => {
@@ -18,12 +19,19 @@ export const Signin = (props) => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const dispatch = useDispatch();
+  const auth = useSelector(state => state.auth);
+
   const userLogin = (e) => {
     e.preventDefault();
     const user = {
       email, password
     }
     dispatch(login(user));
+  }
+
+  
+  if(auth.authenticate) {
+    return <Navigate to="/" replace />;
   }
   return(
     <Layout>

@@ -6,6 +6,8 @@ import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/esm/Col';
 import Row from 'react-bootstrap/esm/Row';
 import { Input } from '../UI/Input';
+import { Navigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 /**
 * @author
@@ -13,6 +15,10 @@ import { Input } from '../UI/Input';
 **/
 
 export const Signup = (props) => {
+  const auth = useSelector(state => state.auth);
+  if(auth.authenticate) {
+    return <Navigate to="/" replace />;
+  }
   return(
     <Layout>
           <Container>

@@ -16,10 +16,11 @@ export default (state=initState, action) => {
     switch(action.type) {
         case authConstants.LOGINREQUEST:
             console.log(state);
-            return state = {
+            state = {
                 ...state,
                 authenticating: true
             }
+            break;
         case authConstants.LOGINSUCCESS:
             state = {
                 ...state,
@@ -28,7 +29,11 @@ export default (state=initState, action) => {
                 authenticate: true,
                 authenticating: false
             }
+            break;
+        case authConstants.LOGOUT_REQUEST:
+            state = {...initState}
         default:
             return state;
     }
+    return state;
 }

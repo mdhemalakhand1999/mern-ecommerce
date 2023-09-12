@@ -1,5 +1,5 @@
-import axios from '../helper/axios';
 import {authConstants} from './constants';
+import axios from '../helpers/axios';
 export const login = (user) => {
     console.log(user);
     // email: 'hemasshema@gmail.com',
@@ -9,26 +9,56 @@ export const login = (user) => {
       dispatch({
         type: authConstants.LOGINREQUEST
       })
-      const res = axios.post('http://localhost:2000/api/admin/signin', {
-          ...user
-      }).then((res) => {
-        if(res.status == 200) {
-          const {token, user} = res.data;
-          localStorage.setItem('token', token)
+      const res = await axios.post('/admin/signin', {
+        ...user
+      });
+      if(res.status === 200) {
+        const {token, user} = res.data;
+        localStorage.setItem('token', token);
+        localStorage.setItem('user', JSON.stringify(user));
+        dispatch({type: authConstants.LOGINSUCCESS, payload: {token, user}});
+      } else {
+        if(res.status === 400) {
           dispatch({
-            type: authConstants.LOGINSUCCESS,
+            type: authConstants.LOGINFAILURE,
             payload: {
-              token, user
+              error: res.data.error
             }
           })
-        } else {
-          if(res.status == 400) {
-            dispatch({
-              type: authConstants.LOGINFAILURE,
-              payload: { error: res.data.error }
-            })
-          }
         }
-      });
+      }
     }
+}
+
+
+export const isUserLoggedIn = () => {
+  return async dispatch => {
+    const token = localStorage.getItem('token');
+    if(token) {
+      const user = JSON.parse(localStorage.getItem('user'));
+      dispatch({
+        type: authConstants.LOGINSUCCESS,
+        payload: {
+          token, user
+        }
+      })
+    } else {
+      dispatch({
+        type: authConstants.LOGINFAILURE,
+        payload: {
+          error: "Failed to login"
+        }
+      })
+    }
+  }
+}
+
+
+export const signout = () => {
+  return async dispatch => {
+    localStorage.clear();
+    dispatch({
+      type: authConstants.LOGOUT_REQUEST
+    })
+  }
 }
