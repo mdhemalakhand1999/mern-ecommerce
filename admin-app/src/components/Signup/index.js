@@ -41,7 +41,7 @@ export const Signup = (props) => {
   return(
     <Layout>
           <Container>
-            <Alert typeof='success'>{user.message}</Alert>
+            {user.message && <Alert typeof='success'>{user.message}</Alert>}
             <Row>
               <Col md={{span: 6, offset: 3}}>
                 <Form onSubmit={userSignUp}>

@@ -6,7 +6,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'
-import { signout } from '../actions/auth.actions';
+import { signout } from '../../actions/auth.actions';
 
 /**
 * @author
