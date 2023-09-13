@@ -11,10 +11,8 @@ export const signup = (user) => {
       const res = await axios.post('/admin/signup', {
         ...user
       });
-      console.log('hemal');
-      console.log(res.status);
       if(res.status === 200) {
-        const {message} = res.data.message;
+        const message = res.data.message;
         dispatch({type: userConstants.USER_REGISTER_SUCCESS, payload: {message}});
       } else {
         if(res.status === 400) {

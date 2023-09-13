@@ -32,6 +32,7 @@ export default (state=initState, action) => {
             break;
         case authConstants.LOGOUT_REQUEST:
             state = {...initState}
+            break;
         default:
             return state;
     }

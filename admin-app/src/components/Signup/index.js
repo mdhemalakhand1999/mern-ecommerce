@@ -9,6 +9,7 @@ import { Input } from '../UI/Input';
 import { Navigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { signup } from '../../actions';
+import { Alert } from 'react-bootstrap';
 
 /**
 * @author
@@ -16,6 +17,8 @@ import { signup } from '../../actions';
 **/
 
 export const Signup = (props) => {
+  const user = useSelector(state => state.user);
+  console.log(user);
   const auth = useSelector(state => state.auth);
   const [firstname, setFirstname] = useState('');
   const [lastname, setLastname] = useState('');
@@ -27,6 +30,9 @@ export const Signup = (props) => {
   if(auth.authenticate) {
     return <Navigate to="/" replace />;
   }
+  if(user.loading) {
+    return <p>Loading...</p>
+  }
   const userSignUp = (e) => {
     e.preventDefault();
     const user = {firstname, lastname, username , email, password}
@@ -35,6 +41,7 @@ export const Signup = (props) => {
   return(
     <Layout>
           <Container>
+            <Alert typeof='success'>{user.message}</Alert>
             <Row>
               <Col md={{span: 6, offset: 3}}>
                 <Form onSubmit={userSignUp}>
