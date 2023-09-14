@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Layout } from '../../layout'
+import { Layout } from '../layout'
 import Container from 'react-bootstrap/esm/Container'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
