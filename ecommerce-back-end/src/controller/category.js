@@ -35,7 +35,7 @@ exports.addCategory = (req, res) => {
         if(cat) {
             res.status(201).json({
                 category: cat,
-                message: "Category created succesfully"
+                message: "New Category created succesfully"
             })
         }
     }).catch((error) => {
