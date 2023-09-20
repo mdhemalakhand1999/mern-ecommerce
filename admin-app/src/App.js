@@ -6,7 +6,7 @@ import { Signup } from './components/Signup';
 import PrivateRoute from './components/HOC/PrivateRoute';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { isUserLoggedIn } from './actions';
+import { getAllCategory, isUserLoggedIn } from './actions';
 import { useDispatch } from 'react-redux';
 import { Products } from './components/Products';
 import { Orders } from './components/Orders';
@@ -18,6 +18,7 @@ function App() {
     if(!auth.authenticate) {
       dispatch(isUserLoggedIn());
     }
+    dispatch(getAllCategory())
   }, []);
   const auth = useSelector(state => state.auth);
   return (

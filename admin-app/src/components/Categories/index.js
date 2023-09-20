@@ -28,9 +28,7 @@ export const Category = (props) => {
 
     const dispatch = useDispatch();
     const category = useSelector(state => state.category);
-    useEffect(() => {
-        dispatch(getAllCategory())
-    }, [])
+   
     const renderCategories = (categories) => {
         let catArr = [];
         if(categories.length > 0) {

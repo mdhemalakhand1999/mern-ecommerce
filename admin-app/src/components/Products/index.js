@@ -62,7 +62,7 @@ const handleProductPicture = (e) => {
             <Row>
                 <Col md={12}>
                     <div style={{display: 'flex', justifyContent: 'space-between'}}>
-                        <h3>Category</h3>
+                        <h3>Products</h3>
                         <button onClick={handleShow}>Add</button>
                     </div>
                 </Col>
