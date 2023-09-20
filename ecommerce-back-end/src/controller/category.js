@@ -13,6 +13,7 @@ function createCategoryList(categories, parentID = null) {
             _id: cat._id,
             name: cat.name,
             slug: cat.slug,
+            parentID: cat.parentID,
             children: createCategoryList(categories, cat.id)
         });
     }

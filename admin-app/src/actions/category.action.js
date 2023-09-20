@@ -27,11 +27,11 @@ export const addCategory = (form) => {
         dispatch({
             type: categoryConstants.ADD_NEW_CATEGORY_REQUEST
         })
-        const res = axios.post('/category/create', form);
+        const res = (await axios).post('/category/create', form);
         if((await res).status == 201) {
             dispatch({
                 type: categoryConstants.ADD_NEW_CATEGORY_SUCCESS,
-                payload: (await res).data.category
+                payload: {category: (await res).data.category}
             })
         } else {
             dispatch({

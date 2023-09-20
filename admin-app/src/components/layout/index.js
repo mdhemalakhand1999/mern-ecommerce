@@ -9,7 +9,6 @@ import {Row, Col, Container} from 'react-bootstrap'
 **/
 
 export const Layout = (props) => {
-  console.log(props);
   return(
     <>
         <Header/>

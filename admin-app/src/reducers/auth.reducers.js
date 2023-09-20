@@ -15,10 +15,8 @@ const initState = {
     message: ''
 }
 export default (state=initState, action) => {
-    console.log(action)
     switch(action.type) {
         case authConstants.LOGINREQUEST:
-            console.log(state);
             state = {
                 ...state,
                 authenticating: true

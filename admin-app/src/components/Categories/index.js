@@ -27,9 +27,8 @@ export const Category = (props) => {
     };
 
     const dispatch = useDispatch();
-    const category = useSelector(state => state.category)
+    const category = useSelector(state => state.category);
     useEffect(() => {
-        console.log('category.js');
         dispatch(getAllCategory())
     }, [])
     const renderCategories = (categories) => {

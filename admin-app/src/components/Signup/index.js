@@ -18,7 +18,6 @@ import { Alert } from 'react-bootstrap';
 
 export const Signup = (props) => {
   const user = useSelector(state => state.user);
-  console.log(user);
   const auth = useSelector(state => state.auth);
   const [firstname, setFirstname] = useState('');
   const [lastname, setLastname] = useState('');
